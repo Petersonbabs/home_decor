@@ -1,0 +1,156 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 1.2;
+}
+
+header h3 {
+    color: var(--salmon);
+}
+
+header p {
+    color: var(--black);
+}
+
+header .search-icon {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: var(--salmon);
+}
+
+/* 
+=========
+HERO
+=========
+*/
+
+.hero {
+    margin: 2rem 0 0;
+}
+
+.hero img {
+    width: 100%;
+}
+
+/* 
+======
+CATEGORIES
+======
+*/
+
+.categories .categories-slides {
+    display: flex;
+    overflow-x: scroll;
+    margin-top: 2rem;
+    gap: 1rem;
+    align-items: center;
+}
+
+.categories-slides img {
+    width: 35px;
+}
+
+.categories-slides::-webkit-scrollbar {
+    scrollbar-width: none;
+}
+
+/* BEST SELLER */
+.best-seller {
+    margin-top: 2rem;
+
+    img {
+        width: 100%;
+    }
+}
+
+/* 
+==============
+NEW COLLECTIONS
+==============
+*/
+
+.auth-links {
+    display: flex;
+    justify-content: end;
+    gap: 1rem;
+    margin: .5rem 0 0;
+}
+
+.auth-links a {
+    text-decoration: none;
+    color: var(--salmon);
+}
+
+.new-collections {
+    margin-top: 2rem;
+}
+
+#new-collections {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+
+.product .img-con {
+    height: 152px;
+    width: 100%;
+    margin-bottom: 1rem;
+}
+
+.product .img-con img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product h3 {
+    color: var(--black);
+    font-weight: 500;
+}
+
+.product p {
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 1.2rem;
+}
+
+.product .bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    align-items: center;
+}
+
+.product .bottom .actions {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.product .bottom .price {
+    color: var(--salmon);
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.product .actions button {
+    background-color: var(--salmon);
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+}
+
+.product .actions img {
+    width: 20px;
+}
