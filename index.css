@@ -113,6 +113,7 @@ NEW COLLECTIONS
 .product h3 {
     color: var(--black);
     font-weight: 500;
+    font-size: 1rem;
 }
 
 .product p {

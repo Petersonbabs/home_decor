@@ -30,6 +30,9 @@ const login = async () => {
             window.location.href = "../index.html"
         }
     } catch (error) {
+        if (error.code === "auth/invalid-credential") {
+            errorMessage.textContent = "Email or password is incorrect"
+        }
         console.log(error)
     } finally {
         loginBtnEl.disabled = false
