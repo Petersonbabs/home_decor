@@ -155,3 +155,23 @@ NEW COLLECTIONS
 .product .actions img {
     width: 20px;
 }
+
+.drop-menu {
+    background: white;
+    list-style: none;
+    padding: 1rem;
+    box-shadow: 0 0 3px black;
+    position: absolute;
+    margin-right: 1rem;
+    top: 100%;
+    border-radius: 8px;
+    display: none;
+}
+
+.show-menu {
+    display: block;
+}
+
+.search-icon {
+    position: relative;
+}

@@ -12,6 +12,12 @@ let currentUser
 
 const greetUserEl = getElement("#greet-user")
 const productsEl = getElement("#new-collections")
+const dropMenuEl = getElement("#drop-menu")
+const dropMenuTriggerEl = getElement("#drop-menu-trigger")
+
+dropMenuTriggerEl.addEventListener("click", () => {
+    dropMenuEl.classList.toggle("show-menu")
+})
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
