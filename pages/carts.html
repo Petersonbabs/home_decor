@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carts</title>
+    <link rel="stylesheet" href="../styles/global.css">
+</head>
+<style>
+    #cart-items {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Cart Card */
+    .cart-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .cart-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Left side (Image + info) */
+    .cart-left {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .cart-img {
+        flex-shrink: 0;
+        width: 100px;
+        height: 100px;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .cart-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .cart-card h3 {
+        margin: 0;
+        font-size: 1.1rem;
+        color: #333;
+    }
+
+    .cart-card p {
+        margin: 0.3rem 0;
+        font-weight: bold;
+        color: #444;
+    }
+
+    .bottom {
+        margin-top: 0.5rem;
+        display: flex;
+        gap: 1rem;
+        font-size: 0.9rem;
+        color: #666;
+    }
+
+    .bottom span:first-child {
+        font-weight: bold;
+        color: #222;
+    }
+
+    /* Delete button */
+    .delete-btn {
+        background: #ff4d4d;
+        border: none;
+        color: white;
+        font-size: 0.9rem;
+        min-width: 60px;
+        padding: 0.4rem 0.8rem;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+    }
+
+    .delete-btn:hover {
+        background: #e60000;
+        display: block;
+        width: auto;
+    }
+
+    .spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid #ddd;
+        /* Light gray border */
+        border-top: 5px solid #007bff;
+        /* Blue part */
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 2rem auto;
+        /* center horizontally */
+    }
+
+    .btn-spinner {
+        width: 16px;
+        height: 16px;
+        display: block;
+        border: 5px solid #ddd;
+        /* Light gray border */
+        border-top: 5px solid #007bff;
+        /* Blue part */
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 2rem auto;
+        /* center horizontally */
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Checkout button */
+    .checkout-btn {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 12px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .checkout-btn:hover {
+        background: #0056b3;
+        transform: translateY(-2px);
+    }
+
+    .empty-cart {
+        text-align: center;
+        padding: 3rem 1rem;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .empty-icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        color: #007bff;
+    }
+
+    .empty-cart h3 {
+        margin: 0.5rem 0;
+        font-size: 1.4rem;
+        color: #333;
+    }
+
+    .empty-cart p {
+        color: #666;
+        margin-bottom: 1.5rem;
+    }
+
+    .shop-btn {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .shop-btn:hover {
+        background: #0056b3;
+        transform: translateY(-2px);
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h2>Cart Items</h2>
+
+        <div id="cart-items">
+
+
+
+        </div>
+
+        <button class="checkout-btn" id="checkout-btn">Check Out</button>
+
+        <div class="bottom-nav">
+            <a href="../index.html">Home</a>
+            <a href="#">Products</a>
+            <a href="./carts.html">Carts</a>
+        </div>
+    </div>
+
+    <script src="../scripts/cart.js" type="module"></script>
+</body>
+
+</html>

@@ -27,7 +27,13 @@ const login = async () => {
         const userCredentials = await signInWithEmailAndPassword(auth, emailEl.value, passwordEl.value)
         if (userCredentials.user) {
             alert("login successful!")
-            window.location.href = "../index.html"
+            const redirectTo = localStorage.getItem('redirectTo') || null
+            if (redirectTo) {
+                window.location.href = redirectTo
+                localStorage.removeItem('redirectTo')
+            } else {
+                window.location.href = "../index.html"
+            }
         }
     } catch (error) {
         if (error.code === "auth/invalid-credential") {

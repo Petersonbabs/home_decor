@@ -1,5 +1,5 @@
 import { app } from "./firebaseConfig/firebase.js"
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js"
+import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js"
 import { getFirestore, collection, doc, getDoc, addDoc, writeBatch, getDocs } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js"
 import { getElement } from "../utils/utils.js"
 
@@ -20,9 +20,15 @@ onAuthStateChanged(auth, (user) => {
     }
 })
 
+const handleLogout = async () => {
+    await signOut(auth)
+    // handleAuthState()
+    window.location.reload()
+}
 
 
 const handleAuthState = async (user) => {
+
     try {
         // fetch the user's document from firestore user the uid
         const userDocRef = doc(userColRef, user.uid)
@@ -31,7 +37,10 @@ const handleAuthState = async (user) => {
         greetUserEl.innerHTML = `
             <h3>Hi ${userData.name.split(" ")[0]}, Welcome Back</h3>
             <p>Create spaces that bring joy</p>
+            <button style="margin-top: .5rem; background: black; border: none; color: white; padding: .2rem .6rem"  id="logout-btn">logout</button>
         `
+        document.getElementById("logout-btn").addEventListener("click", handleLogout)
+
     } catch (error) {
         console.log(error)
     }
@@ -61,9 +70,12 @@ const addToCart = async (productId) => {
         }
         const userCartColRef = collection(DB, "users", currentUser.uid, "carts")
         const docRef = await addDoc(userCartColRef, newCartItem)
-        console.log(docRef)
+        alert(`${product.title} has been added to cart`)
     } catch (error) {
         console.log(error)
+    } finally {
+        const buttonEl = document.getElementById(productId)
+        buttonEl.innerHTML = `<img src="./images/plus.png" alt="">`
     }
 }
 
@@ -92,7 +104,7 @@ const getAllProducts = async () => {
                             <button>
                                 <img src="./images/heart.png" alt="">
                             </button>
-                            <button class="cart-btn" buttonId="${doc.id}">
+                            <button class="cart-btn" id="${doc.id}" buttonId="${doc.id}">
                                 <img src="./images/plus.png" alt="">
                             </button>
            
@@ -107,7 +119,9 @@ const getAllProducts = async () => {
         const cartButtons = document.querySelectorAll(".cart-btn")
         cartButtons.forEach((btn) => {
             const productId = btn.getAttribute("buttonId")
-            btn.addEventListener("click", () => {
+            btn.addEventListener("click", (e) => {
+                const buttonEl = document.getElementById(productId)
+                buttonEl.textContent = "---"
                 addToCart(productId)
             })
         })
